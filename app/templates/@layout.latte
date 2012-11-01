@@ -1,0 +1,60 @@
+{**
+ * My Application layout template.
+ *
+ * @copyright  Copyright (c) 2010 John Doe
+ * @package    MyApplication
+ *
+ * @param string   $basePath web base path
+ * @param string   $robots   tell robots how to index the content of a page (optional)
+ * @param array    $flashes  flash messages
+ *}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+	<meta name="description" content="Nette Framework web application skeleton">
+	<meta name="robots" content="{$robots}" n:ifset="$robots">
+
+	<title>{block title}{/block} Nette Isotope jQueryMobile</title>
+
+	<link rel="stylesheet" media="screen,projection,tv" href="{$basePath}/css/screen.css" type="text/css">
+	<link rel="stylesheet" media="screen,projection,tv" href="{$basePath}/css/jquery.mobile.structure-1.2.0.css" type="text/css">
+	<link rel="shortcut icon" href="{$basePath}/favicon.ico" type="image/x-icon">
+
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+	<script type="text/javascript" src="{$basePath}/js/netteForms.js"></script>
+	<script type="text/javascript" src="{$basePath}/js/jquery.nette.js"></script>
+	<script type="text/javascript" src="{$basePath}/js/jquery.isotope.min.js"></script>
+	<script type="text/javascript" src="{$basePath}/js/jquery.mobile-1.2.0.min.js"></script>
+	<script type="text/javascript" src="{$basePath}/js/jquery.livequery.js"></script>
+	<script type="text/javascript" src="{$basePath}/js/isotope-setup.js"></script>
+	<script type="text/javascript" src="{$basePath}/js/script.js"></script>
+	{block head}{/block}
+</head>
+
+<body>
+	<script> document.body.className+='js' </script>
+	<script>
+		var BASE_URI = {$baseUri};
+	</script>
+
+	<div n:foreach="$flashes as $flash" class="flash {$flash->type}">{$flash->message}</div>
+
+	<div id="wrapper">
+		<div data-role="header">
+			<a n:href="Homepage:">Home</a>
+			<a n:href="Cars:">Cars</a>
+			<a n:href="Cars:show">Cars show</a>
+			<a n:href="Equipment:">Equipment</a>
+			|
+			<a class="relayout" href="#">Relayout isotope!</a>
+		</div>
+		
+		<div>
+		{include #content}
+		</div>
+	</div>
+</body>
+</html>

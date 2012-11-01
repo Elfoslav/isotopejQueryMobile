@@ -1,0 +1,51 @@
+{block content}
+<div id="homepage" data-role="page">
+	<div>
+		<script>
+			var currentIsotope = '#homepage';
+		</script>
+		<div class="isotope-item">
+			<h1>Isotope with jQuery Mobile</h1>
+		</div>
+
+		<div class="isotope-item">
+			<p>This is a Nette Isotope jQueryMobile homepage</p>
+		</div>
+
+		<div class="isotope-item">
+			<p><a n:href="Cars:">Browse cars to see more items</a></p>
+		</div>
+
+		<div class="isotope-item">
+			<h3>Isotope initialization:</h3>
+			<pre>
+//document.ready
+$(function() {
+	$container = $(currentIsotope);
+	$container.isotope({
+		itemSelector : '.isotope-item'
+	});
+});
+
+$(document).ajaxComplete(function() {
+	$container = $(currentIsotope);
+	if($container.is(':hidden')) {
+		//container needs to be visible in order to isotope work
+		$container.show();
+	}
+	$container.isotope({
+		itemSelector : '.isotope-item'
+	});
+	$container.isotope('reLayout', function() {
+		console.log($container);
+	});
+});
+			</pre>
+		</div>
+		<div class="isotope-item">
+			<p>last isotope item</p>
+		</div>
+	</div>
+</div>
+
+{/block}
